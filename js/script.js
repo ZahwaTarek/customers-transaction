@@ -24,21 +24,21 @@ async function renderTable() {
 }
 
 async function filterTable() {
+    // console.log("working");
     const nameFilter = document.getElementById('filter-name').value.toLowerCase();
     const amountFilter = document.getElementById('filter-amount').value;
 
-    // console.log(nameFilter,amountFilter);
+    // console.log(nameFilter);
 
     const data = await fetchData();
     const tableBody = document.querySelector('#customers-table tbody');
-    console.log(data);
     tableBody.innerHTML = '';
 
     const filteredTransactions = data.transactions.filter(transaction => {
         const customer = data.customers.find(c => c.id === transaction.customer_id);
         const matchesName = customer.name.toLowerCase().includes(nameFilter);
         const matchesAmount = amountFilter ? transaction.amount >= amountFilter : true;
-        // console.log(matchesAmount,matchesName);
+        console.log(matchesName, matchesAmount);
         return matchesName && matchesAmount;
     });
 
@@ -57,7 +57,6 @@ async function filterTable() {
 }
 
 async function renderChart(filteredTransactions = null) {
-    // console.log(filteredTransactions);
     const data = await fetchData();
     const ctx = document.getElementById('transaction-chart').getContext('2d');
     const transactions = filteredTransactions || data.transactions;
