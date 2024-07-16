@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Transactions</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    <section id="data">
+      <h1 class="text-center text-primary my-2">Customer Transactions</h1>
+      <div class="input text-center m-4">
+        <input
+          type="text"
+          id="filter-name"
+          placeholder="Filter by customer name"
+        />
+        <input
+          type="number"
+          class="mx-2"
+          id="filter-amount"
+          placeholder="Filter by transaction amount"
+        />
+        <button class="btn py-1 btn-outline-primary" onclick="filterTable()">
+          Filter
+        </button>
+      </div>
+      <table id="customers-table">
+        <thead>
+          <tr>
+            <th>Customer Name</th>
+            <th>Transaction Date</th>
+            <th>Transaction Amount</th>
+          </tr>
+        </thead>
+        <tbody class="data"></tbody>
+      </table>
+      <canvas id="transaction-chart" width="400" height="200"></canvas>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
